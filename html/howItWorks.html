@@ -1,0 +1,123 @@
+<html>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Academy kitties</title>
+    <script type="text/javascript" src="assets/js/jquery-3.4.1.js"></script>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <script src="assets/bootstrap/js/popper.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/web3.min.js"></script>
+    <script src="./abi.js"></script>
+
+    <link rel="stylesheet" href="assets/css/factory.css" />
+
+  
+    <link rel="stylesheet" href="assets/css/mystyle.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/cats.css">
+    <link rel="stylesheet" href="assets/css/colors.css">
+    <link rel="stylesheet" href="assets/css/factory.css">
+    <link rel="stylesheet" href="assets/css/frontend.css">
+    
+
+    
+      
+
+  </head>
+
+    <body>
+        <div>
+        <nav class="navbar navbar-expand-lg  navbar-dark bg-dark" id="navbar1">
+            <a class="navbar-brand mr-auto" href="mainPage.html">Crypto-History</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="howItWorks.html">How it Works<span class="sr-only">(current)</span></a>
+                        
+                    </li>
+                    <li class="nav-item active">
+                        
+                        <a class="nav-link" href="accountPage.html">My Account<span class="sr-only">(current)</span></a>
+                    </li>
+         
+                </ul>
+            </div>
+        </nav>
+    </div>
+    
+    <h1 style=font-size:100px id="features">How it Works</h1>
+    
+        <div class="col reading">
+            <h1 class="heading">Collect digital pieces of art</h1>
+            <p class="h3">Each collection consists of cards.<br>
+              Some of the cards can be bought,<br>
+               some of them you will need to forge<br>
+               (or buy from other collectors that have already created them)<br>
+              
+             </p>
+        </div>
+    
+          <div class="col reading">
+            <h1 class="heading">how to create a forge</h1>
+            <p class="h3"> Let's say  you have 2 collections of cards:<br>
+
+                A, B, C  and X, Y, Z.<br>
+                Let's say there is only 5 collections A, B, C  and 5 collections X, Y, Z.<br>
+                Every card will have a number.
+
+                That means:<br>
+                A1, B1, C1<br>
+                A2, B2, C2<br>
+                etc....<br>
+
+                Let's say there is a card "K" that requares "A" and "Z" in order to be forged<br>
+                K=A+Z<br>
+
+                So all you have to do is combine card "A" and card "Z" to forge card "K"<br>
+                 
+                But.... <br>
+
+                Since we have 5 collections of ABC and 5 collections of XYZ the card "K" can only be forged 5 times<br>
+                and there is no way to forge more.<br>
+
+                The conditions to create a card are:<br>
+
+                The cards that you pair together should not be have paired previously otherwise you won't forge a card<br>
+
+                K=A1+Z1;<br>
+
+                K=A1+Z5;<br>
+                etc..<br>
+                Let's say some other collector collects A1 and Z5 after you've used them already.<br>
+                 Now this collector want's to do the same,<br>
+                 but it will not work. <br>
+                
+              
+             </p>
+          </div>
+    
+
+          <div class="col reading">
+            <h1 class="heading">How to destroy cards</h1>
+            <p class="h3">
+              
+                In order to destroy a card you need to own 2 cards of the same name.<br>
+                For example:<br>
+                You own A1 and A3;<br>
+                in this case you can destroy either A1 or A3;<br>
+                by doing that you increase the value of the cards "A" because now there is fewer of them in the system<br>
+                and if they ever have to be used other for some other collections <br>
+                other collectors will have to deal with the ones that own "A"<br>
+
+              
+              
+             </p>
+        </div>
+    
+    </body>
+</html>
