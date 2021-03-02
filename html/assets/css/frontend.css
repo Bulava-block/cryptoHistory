@@ -232,6 +232,10 @@ div:last-child {
   margin-left: 600px;
 }
 
+.leaders {
+  margin-top: 100px;
+  margin-left: 600px;
+}
 .cardLeaders {
   margin-left: 80px;
 }
@@ -241,6 +245,24 @@ div:last-child {
 }
 #lead {
   margin-top: 100px;
+}
+#destroyerDestroyed {
+  margin-right: 260px;
+  margin-top: -200px;
+}
+
+#destroyCard {
+  cursor: pointer;
+  margin-right: -70px;
+}
+
+#ForgeCardDiv {
+  margin-right: 260px;
+  margin-top: -200px;
+}
+
+#collectionAndBuySell {
+  margin-top: -50px;
 }
 
 #witches {
@@ -266,4 +288,12 @@ div:last-child {
 
 #forge {
   margin-left: 700px;
+}
+
+#allCollectionsDiv {
+  margin-top: -200px;
+}
+
+#inc {
+  margin-top: 350px;
 }

@@ -10,6 +10,8 @@
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/web3.min.js"></script>
     <script src="./abi.js"></script>
+    
+
 
     <link rel="stylesheet" href="assets/css/factory.css" />
 
@@ -50,9 +52,10 @@
         </div>
         
         <button id="mintButton">
-            <img  type="image"  src="./mintButton.png"/>
+            <img  type="image" onclick="createCardJs()"  src="buttons/destroyCard.png"/>
             </button>
 
+    <div id="">
         <h1 style=font-size:100px id="features">Leaders</h1>
      
         <div class="container" id="lead">
@@ -70,7 +73,7 @@
             </div>
         </div>
 
-        <h1 style=font-size:100px id="features">Night Witches</h1>
+         <h1 style=font-size:100px id="features">Night Witches</h1>
 
         <div class="container" id="witches">
             <div class="row justify-content-md-center ">
@@ -106,6 +109,8 @@
             </div>
         </div>
 
+    </div>
 
     </body>
+    <script src="./index.js"></script>
 </html>

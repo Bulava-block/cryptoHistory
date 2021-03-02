@@ -474,3 +474,44 @@ h4 {
   overflow: hidden;
   transform: translateX(90%);
 }
+
+#buttonCollection {
+  cursor: pointer;
+  margin: 50px;
+}
+#buttonBuySell {
+  cursor: pointer;
+  margin: 50px;
+}
+
+#cardsRow {
+  padding-left: 200px;
+}
+
+#buttonMyCards {
+  cursor: pointer;
+  margin-top: 0px;
+  margin-right: 200px;
+}
+
+#buttonDestroy {
+  cursor: pointer;
+  margin-top: 0px;
+  margin-right: 200px;
+}
+
+#buttonForge {
+  cursor: pointer;
+  margin-top: 0px;
+  margin-right: 200px;
+}
+
+#buyButton {
+  cursor: pointer;
+  margin: 50px;
+}
+
+#sellButton {
+  cursor: pointer;
+  margin: 50px;
+}

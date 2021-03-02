@@ -64,6 +64,9 @@ function catDna(dnaStr) {
 
 //Cat html div
 
-var name = "Stas";
-var string = "Hello" + name + "!";
+// var name = "Stas";
+// var string = "Hello" + name + "!";
 
+// <div onclick="window.location.href='cardInfo.html';"  style="cursor: pointer" class="cardLeaders">
+// <img type="image" id="bismark" src="./leaders/bismark.png" />
+// </div>
