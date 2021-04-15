@@ -212,7 +212,7 @@ div:last-child {
 }
 
 #mintButton {
-  margin-left: 600px;
+  margin-left: 700px;
 }
 
 #navbar1 {
@@ -230,6 +230,11 @@ div:last-child {
 #features {
   margin-top: 100px;
   margin-left: 600px;
+}
+
+#features1 {
+  margin-top: 100px;
+  margin-left: 400px;
 }
 
 .leaders {

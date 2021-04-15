@@ -1,9 +1,16 @@
-pragma solidity >=0.6.0;
+pragma solidity >=0.6.2;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721Burnable.sol";
 
-contract cryptoHistory is ERC721, Ownable {
+contract cryptoHistory is ERC721, Ownable, ERC721Burnable {
+    using SafeMath for uint256;
+    using Address for address;
+    using EnumerableSet for EnumerableSet.UintSet;
+    using EnumerableMap for EnumerableMap.UintToAddressMap;
+    using Strings for uint256;
+
     constructor() public ERC721("cryptoHistory", "CH") {}
 
     string public constant _name = "cryptoHistory";
@@ -15,7 +22,6 @@ contract cryptoHistory is ERC721, Ownable {
         uint256 collection;
         uint256 cardType;
         uint8 capacity;
-        uint256[] historyOfCards;
         mapping(uint256 => uint256) charges;
     }
 
@@ -36,13 +42,48 @@ contract cryptoHistory is ERC721, Ownable {
 
     mapping(uint256 => mapping(uint256 => uint256)) public chargesForCards;
 
-    // array of cards that you will get if you forge a card
-    uint256[] cardsToForge;
-
     // this prevents a functon from minting the same cards few times.
-    mapping(uint256 => bool) public alreadycreated;
+    mapping(uint256 => bool) public alreadyCreated;
+
+    // this prevents a cardType from being charged more than once
+    mapping(uint256 => bool) public alreadyCharged;
+
+    // this mapping creates an array of cards that were charged
+    mapping(address => EnumerableSet.UintSet) cardsToForge;
+
+    //this shows which cardtype a card has charges for and how many charges it has
+    mapping(uint256 => EnumerableSet.UintSet) historyOfCards;
 
     event cardCreated(uint256 _collection, uint256 _cardType, address owner);
+
+    // historyOfCards   Enumarable.set
+
+    // adds a card ID to the array that contains the cards collectors can forge
+    function addHistoryOfCards(uint256 cardId, uint256 insertId) public {
+        historyOfCards[cardId].add(cards[insertId].cardType);
+    }
+
+    // when card is forged this will take the card out of the array
+    function removeCardsToForge(uint256 cardId, uint256 insertId) public {
+        historyOfCards[cardId].remove(cards[insertId].cardType);
+    }
+
+    // that shows all the ID's of the cards that are not forged yet
+    function getAllHistoryOfCards(uint256 cardId)
+        public
+        view
+        returns (uint256[] memory)
+    {
+        uint256 totalCardsX = historyOfCards[cardId].length();
+
+        uint256[] memory cardsX = new uint256[](totalCardsX);
+
+        for (uint256 i = 0; i <= totalCards; i++) {
+            cardsX[i] = historyOfCards[cardId].at(i);
+        }
+
+        return cardsX;
+    }
 
     //this creates a card
     function _createCard(uint256 _collection, uint256 _cardType)
@@ -62,13 +103,12 @@ contract cryptoHistory is ERC721, Ownable {
 
     // this creates all the cards with the same cardType
     function mintCard(uint256 collection, uint256 cardType) public onlyOwner {
-        require(alreadycreated[cardType] == false);
-
+        require(alreadyCreated[cardType] == false);
+        alreadyCreated[cardType] = true;
         for (uint256 i = 0; i < maxForEachCard; i++) {
             uint256 x = _createCard(collection, cardType);
             _safeMint(msg.sender, x);
         }
-        alreadycreated[cardType] = true;
     }
 
     // this creates all the cards and collections of the current season
@@ -98,39 +138,77 @@ contract cryptoHistory is ERC721, Ownable {
         capacity = card.capacity;
     }
 
+    // functions that we use to add remove from the array of charged cards
+
+    // addCardsToForge()
+    // removeCardsToForge()
+    // getAllCards()
+
+    // adds a card ID to the array that contains the cards collectors can forge
+    function addCardsToForge(uint256 cardId) public {
+        cardsToForge[owner()].add(cardId);
+    }
+
+    // when card is forged this will take the card out of the array
+    function removeCardsToForge(uint256 cardId) public {
+        cardsToForge[owner()].remove(cardId);
+    }
+
+    // that shows all the ID's of the cards that are not forged yet
+    function getAllCards() public view returns (uint256[] memory) {
+        uint256 totalCardsX = cardsToForge[owner()].length();
+
+        uint256[] memory cardsX = new uint256[](totalCardsX);
+
+        for (uint256 i = 0; i < totalCards; i++) {
+            cardsX[i] = cardsToForge[owner()].at(i);
+        }
+
+        return cardsX;
+    }
+
+    //  End of   cardsToForge   Enumarable.set
+
     function chargeCards(
-        uint256 cardType1,
-        uint256 cardType2,
-        uint256 cardType3
+        uint256 toChargeId,
+        uint256 key1Id,
+        uint256 key2Id
     ) public onlyOwner {
-        // Mojno li tak ne ravno pisat?
         require(
-            cardType1 != cardType2 &&
-                cardType2 != cardType3 &&
-                cardType1 != cardType3,
+            cards[toChargeId].cardType != cards[key1Id].cardType &&
+                cards[key1Id].cardType != cards[key2Id].cardType,
+            "You cannot use cards with the same cardType!"
+        );
+        require(
+            cards[toChargeId].collection != cards[key1Id].cardType &&
+                cards[key1Id].cardType != cards[key2Id].cardType,
             "You cannot use cards with the same cardType!"
         );
 
-        // KAK prospisat collection esli ego net v parametrah
-        //require(condition, "You cannot use cards with the same collection!");
-        // TOTALCARDS < ILI =< ????????????????
-        //  //////////////////////////////////////////////////////////////
+        require(alreadyCharged[cards[toChargeId].cardType] == false);
+        require(_exists(toChargeId) == true);
+        require(_exists(key1Id) == true);
+        require(_exists(key2Id) == true);
+
+        alreadyCharged[cards[toChargeId].cardType] = true;
         for (uint256 i = 0; i <= totalCards; i++) {
-            if (cards[i].cardType == cardType2) {
-                cards[i].charges[cardType1] == cards[i].capacity;
-                cards[i].historyOfCards.push(cardType1);
+            if (cards[i].cardType == cards[key1Id].cardType) {
+                cards[i].charges[cards[toChargeId].cardType] ==
+                    cards[i].capacity;
+                addHistoryOfCards(key1Id, toChargeId);
             }
-            if (cards[i].cardType == cardType3) {
-                cards[i].charges[cardType1] == cards[i].capacity;
-                cards[i].historyOfCards.push(cardType1);
+            if (cards[i].cardType == cards[key2Id].cardType) {
+                cards[i].charges[cards[toChargeId].cardType] ==
+                    cards[i].capacity;
+                addHistoryOfCards(key2Id, toChargeId);
             }
-            if (cards[i].cardType == cardType1) {
-                cardsToForge.push(i);
+            if (cards[i].cardType == cards[toChargeId].cardType) {
+                addCardsToForge(i);
             }
         }
     }
 
-    //this destryoes a card and gives
+    //this destryoes a card and makes the other card stronger
     function destroyCard(uint256 destroyerId, uint256 consumedId)
         public
         returns (uint256 capacity, uint256 cardType)
@@ -143,9 +221,9 @@ contract cryptoHistory is ERC721, Ownable {
             cards[destroyerId].capacity +
             cards[consumedId].capacity;
 
-        _burn(consumedId);
-        for (uint256 i = 0; i < cards[consumedId].historyOfCards.length; i++) {
-            uint256 x = cards[consumedId].historyOfCards[i];
+        burn(consumedId);
+        for (uint256 i = 0; i < getAllHistoryOfCards(consumedId).length; i++) {
+            uint256 x = getAllHistoryOfCards(consumedId)[i];
 
             if (cards[consumedId].charges[x] != 0) {
                 cards[destroyerId].charges[x] =
@@ -163,37 +241,32 @@ contract cryptoHistory is ERC721, Ownable {
         uint256 secondCardId,
         uint256 cardTypeToForge
     ) public {
-        //The owner of the opened card must be the owener of the contract!!!!!
         require(cards[firstCardId].charges[cardTypeToForge] > 0);
         require(cards[secondCardId].charges[cardTypeToForge] > 0);
         require(ownerOf(firstCardId) == msg.sender);
         require(ownerOf(secondCardId) == msg.sender);
 
-        /// PRAVILNO LI ETO NAPISANO? mojno li Card v kvadratnih skobkah
-        //require(ownerOf(cards[Card].cardTypeToForge) == owner());
-
         cards[firstCardId].charges[cardTypeToForge] - 1;
         cards[secondCardId].charges[cardTypeToForge] - 1;
-        for (uint256 i = 0; i < cardsToForge.length; i++) {
-            if (cards[cardsToForge[i]].cardType == cardTypeToForge) {
+        uint256[] memory x = getAllCards();
+        for (uint256 i = 0; i < x.length; i++) {
+            if (cards[x[i]].cardType == cardTypeToForge) {
+                safeTransferFrom(owner(), msg.sender, x[i]);
+                removeCardsToForge(x[i]);
                 break;
-                safeTransferFrom(owner(), msg.sender, cards[cardsToForge[i]]);
             }
         }
     }
 
-    // function getCardByOwner(address _owner)
-    //     external
-    //     view
-    //     returns (uint256[] memory)
-    // {
-    //     x = balanceOf(_owner);
-    //     uint256[] memory result = new uint256[](x);
-    //     uint256 counter = 0;
-    //     for (uint256 i = 0; i < x; i++) {
-    //         y = tokenByIndex(i);
-    //         result.push(y);
-    //     }
-    //     return result;
-    // }
+    function getCardByOwner() public view returns (uint256[] memory) {
+        uint256 x = balanceOf(msg.sender);
+        uint256[] memory result = new uint256[](x); //new
+        uint256 counter = 0;
+        for (uint256 i = 0; i < x; i++) {
+            uint256 y = tokenOfOwnerByIndex(msg.sender, i);
+            result[counter] = y;
+            counter++;
+        }
+        return result;
+    }
 }

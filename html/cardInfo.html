@@ -50,30 +50,56 @@
         </nav>
     </div>
 
-    <h1 style=font-size:100px id="nameOf">Otto Fon Bismark</h1>
+    <h1 style=font-size:100px id="nameOfSalePage">Otto Fon Bismark</h1>
 
-    <div class="row justify-content-md-center bigger" >
-        <div  class="cardLeadersinfo ">
-            <img type="image" id="bismarkInfo" src="./leaders/bismark.png"/>
-        </div>
-    </div>
-    <div>
-        <div class="btn from-center">info</div>
-            <div class="btn from-bottom">Cards you can forge</div>
+        <div class="container " id="sellPage">
+                       <!-- this shows the  capacity word -->
+            <div class="input-group-prepend" id="pikBuy2">
+                <span >CAPACITY</span>
+            </div>
+                       <!-- this shows the collection word -->
+            <div class="input-group-prepend" id="pikBuy3">
+                    <span >COLLECTION</span>
+            </div>
+                         <!-- this shows the collection number -->
+            <div class="input-group-prepend " id="collectionNum">
+                <span class="input-group-text" ></span>
+            </div>
+                      <!-- this shows the capacity number -->
+            <div class="input-group-prepend " id="capacityNum">
+                <span class="input-group-text" ></span>
+            </div>
+                   <!-- this shows the price of the card -->
+            <div class="input-group-prepend" id="pikBuy">
+                <span class="input-group-text" >5</span>
             </div>
 
-            <div class="col reading" id="reading">
-                <h1 class="heading">We are gonna pust some reading here</h1>
-                <p class="h3">Each collection consists of cards.<br>
-                  Some of the cards can be bought,<br>
-                   some of them you will need to forge<br>
-                   (or buy from other collectors that have already created them)<br>
-                  
-                 </p>
+                    <!-- this shows the picture of a character -->
+            <div  class="cardLeadersinfo ">
+                <img type="image" id="cardPicture" src="./leaders/bismark.png"/>
             </div>
-            <div>
-                <p class="h3" id="inc"> Ivan on tech inc. 2020</p>
-                </div>
-            </body>
+                    <!-- input price here -->
+            <div class="input-group-prepend " id="pik">
+                <input  id="cardPrice" name="pin" maxlength="8" size="8">
+                <span class="input-group-text" id="basic-addon1">ETH</span>
+                
+            </div>
+                    <!-- BUY BUTTON -->
+            <div id="buyCardButton" >
+                <img  type="image" class="hidden" onclick="buyCard()" src="buttons/buyButton.png"/>
+            </div>
+                    <!-- SELL BUTTON -->
+            <div id="sellCardButton" >
+                <img  type="image" id="sellCardButton" onclick="sellCard()"  src="buttons/sellButton.png"/>
+            </div>
+                    <!-- black sign "ETH" -->
+            <div class="input-group-prepend hidden"  id="pikBuy1">
+                <span >ETH</span>
+            </div>  
+            
+      
+        </div> 
+        
+
     </body>
 </html>
