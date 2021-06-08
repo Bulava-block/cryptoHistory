@@ -261,6 +261,10 @@ div:last-child {
   margin-right: -70px;
 }
 
+#forgeCard {
+  cursor: pointer;
+}
+
 #ForgeCardDiv {
   margin-right: 260px;
   margin-top: -200px;
@@ -301,4 +305,33 @@ div:last-child {
 
 #inc {
   margin-top: 350px;
+}
+#chargeCard {
+  position: relative;
+}
+
+#cardToForge {
+  position: absolute;
+  cursor: pointer;
+  left: 800px;
+}
+
+#buttonCard1 {
+  cursor: pointer;
+  position: absolute;
+  padding-left: 300px;
+}
+
+#buttonCard2 {
+  cursor: pointer;
+  padding-left: 300px;
+  position: absolute;
+  top: 400px;
+}
+
+#charge {
+  position: absolute;
+  top: 800px;
+  right: 200px;
+  cursor: pointer;
 }

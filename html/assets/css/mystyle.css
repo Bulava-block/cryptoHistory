@@ -488,30 +488,7 @@ h4 {
   padding-left: 200px;
 }
 
-#chargeCard {
-  padding-top: 300px;
-  padding-left: 200px;
-}
-
-#charge {
-  cursor: pointer;
-  padding-top: 100px;
-  padding-right: 200px;
-}
-
-#cardToForge {
-  cursor: pointer;
-  margin-top: -200px;
-  margin-right: 200px;
-}
-
 #buttonMyCards {
-  cursor: pointer;
-  margin-top: 0px;
-  margin-right: 200px;
-}
-
-#buttonCard1 {
   cursor: pointer;
   margin-top: 0px;
   margin-right: 200px;
@@ -530,12 +507,6 @@ h4 {
 }
 
 #buttonForge {
-  cursor: pointer;
-  margin-top: 0px;
-  margin-right: 200px;
-}
-
-#butonCard2 {
   cursor: pointer;
   margin-top: 0px;
   margin-right: 200px;

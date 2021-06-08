@@ -9,18 +9,18 @@
     <script src="assets/bootstrap/js/popper.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="assets/js/web3.min.js"></script>
-    <script src="assets/js/showCats/showCats.js"></script>
+    
     
     <script src="./abi.js"></script>
 
-    <link rel="stylesheet" href="assets/css/factory.css" />
+    
 
   
     <link rel="stylesheet" href="assets/css/mystyle.css">
-    <link rel="stylesheet" href="assets/css/animations.css">
+    
     <link rel="stylesheet" href="assets/css/cats.css">
     <link rel="stylesheet" href="assets/css/colors.css">
-    <link rel="stylesheet" href="assets/css/factory.css">
+    
     <link rel="stylesheet" href="assets/css/frontend.css">
     
 
@@ -61,10 +61,10 @@
         
     <div class="row justify-content-md-center" id="collectionAndBuySell" >
         <div >
-            <img  type="image" id="buttonCollection"  src="buttons/collection.png"/>
+            <img  type="image" id="buttonCollection"  onclick=getCards()  src="buttons/collection.png"/>
         </div>
         <div >
-            <img  type="image" id="buttonBuySell" src="buttons/buyOrSell.png"/>
+            <img  type="image" id="buttonBuySell"  src="buttons/buyOrSell.png"/>
         </div>
     </div>
 
@@ -72,14 +72,14 @@
         <div >
             <img  type="image" id="sellButton" class="hidden"  src="buttons/sellButton.png"/>
         </div>
-        <div type="button" onclick="getInventory()">
+        <div type="button" onclick=getCards()>
             <img  type="image" id="buyButton" class="hidden" src="buttons/buyButton.png"/>
         </div>
         </div>
         
     <div id="cardsRow" class="row justify-content-md-center">
         <div >
-            <img  type="image" id="buttonMyCards" class="hidden"  src="buttons/myCards.png"/>
+            <img  type="image" id="buttonMyCards" class="hidden"     src="buttons/myCards.png"/>
             
         </div>
         <div>
@@ -94,34 +94,17 @@
 
 <div id="allCollectionsDiv" class="hidden">
     <h1 style=font-size:100px class="leaders" >Leaders</h1>
-    <div class="container" id="lead">
-        <div sgsdgdg class="row justify-content-md-center ">
-            <div onclick="window.location.href='cardInfo.html';"  style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="bismark" src="./leaders/bismark.png" />
-            </div>
-            <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="bloodyMarry" src="./leaders/bloodyMarry.png" />
-            </div>
-            <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="carolusRex" src="./leaders/carolusRex.png" />
-            </div>
+    <div class="container " >
+        <div  class="row justify-content-md-center " id="lead">
             
         </div>
     </div>
     
     <h1 style=font-size:100px class="leaders" >Witches</h1>
 
-        <div class="container" id="witches">
-            <div class="row justify-content-md-center ">
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders ">
-                    <img type="image" id="aronova" src="./witches/aronova.jpg"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="belik" src="./witches/belik.jpg"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="chechneva" src="./witches/chechneva.jpg"/>
-                </div>
+        <div class="container " >
+            <div class="row justify-content-md-center " id="witches">
+               
                 
             </div>
         </div>
@@ -129,20 +112,9 @@
     
         <h1 style=font-size:100px class="leaders" >Spies</h1>
 
-        <div class="container" id="witches">
-            <div class="row justify-content-md-center ">
-               
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="belik" src="./spies/hall.png"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="chechneva" src="./spies/kyznetsov.png"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="gasheva" src="./spies/morros.png"/>
-                </div>
-               
-                
+        <div class="container " >
+            <div class="row justify-content-md-center"  id="spies">
+       
             </div>
         </div>
     
@@ -152,44 +124,47 @@
                     <!-- buttons for modal to destroy cards -->
     <div class="container hidden" id="destroyerDestroyed">
         <div  class="row justify-content-md-center ">
-            <div  style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="" data-toggle="modal" data-target="#pipec" src="./buttons/destroyer.png" />
+            <div id="destroyer"  style="cursor: pointer" class="cardLeaders">
+                <img type="image"  data-toggle="modal" data-target="#pipec" src="./buttons/destroyer.png" />
             </div>
-            <div style="cursor: pointer"  class="cardLeaders">
-                <img type="image" id="" data-toggle="modal" data-target="#pipec" src="./buttons/destroyed.png" />
+            <div id="destroyed" style="cursor: pointer"  class="cardLeaders">
+                <img type="image"  data-toggle="modal" data-target="#pipec" src="./buttons/destroyed.png" />
             </div>
            
-        </div>
-        <div class="row justify-content-md-center" >
-            <img  type="image" id="destroyCard"   src="buttons/destroyCard.png"/>
-        </div>
-        
-        
+        </div >
+        <div id="destroyCard" class="row justify-content-md-center" >
+            <img  type="image" src="buttons/destroyCard.png"/>
+        </div>       
     </div>
+
+
+
                 <!-- butttons for modal to forge cards -->
     <div class="container hidden" id="ForgeCardDiv">
         <div  class="row justify-content-md-center ">
-            <div  style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="card1" data-toggle="modal" data-target="#pipec" src="./buttons/card1.png" />
+            <div id="card1"  style="cursor: pointer" class="cardLeaders">
+                <img type="image"  data-toggle="modal" data-target="#pipec" src="./buttons/card1.png" />
             </div>
-            <div  style="cursor: pointer" class="cardLeaders">
-                <img type="image" id="card2" data-toggle="modal" data-target="#pipec" src="./buttons/card2.png" />
+            <div id="card2"  style="cursor: pointer" class="cardLeaders">
+                <img type="image"  data-toggle="modal" data-target="#pipec" src="./buttons/card2.png" />
             </div>
+            <div id="xxx">
+                <img  type="image"   data-toggle="modal"  data-target="#pipec"  src="buttons/cardToForge.png"/>
+                
+            </div> 
             
             
         </div>
         <div class="row justify-content-md-center" >
-            <img  type="image" id="destroyCard"  src="buttons/forgeCard.png"/>
+            <img  type="image" id="forgeCard"  src="buttons/forgeCard.png"/>
         </div>
     </div>
 
-    <div onclick="appendCard(cardType=2);" style="cursor: pointer"> 
+    <div > 
         <p class="h3" id="inc"> Ivan on tech inc. 2020</p>
     </div>
 
-        <div id="stas">
-           
-       </div>
+    <div id="kazbek"></div>
 
   <!-- Modal -->
   <div
@@ -214,7 +189,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="row justify-content-md-center" id="">
+          <div class="row justify-content-md-center" id="sosok">
             
           </div>
         </div>

@@ -53,81 +53,96 @@
         
         <button id="mintButton">
             <img  type="image" onclick="createCardJs()"  src="buttons/mintButton.png"/>
-            </button>
+        </button>
+            <button id="mintButton">
+                <img  type="image" onclick=getCards()  src="buttons/mintButton.png"/>
+        </button>
 
-    <div id="cardsToMint" class="hidden">
-        <h1 style=font-size:100px id="features">Leaders</h1>
-     
-        <div class="container" id="lead">
-            <div sgsdgdg class="row justify-content-md-center ">
-                <div onclick="window.location.href='cardInfo.html';"  style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="bismark" src="./leaders/bismark.png" />
+        <!-- ########################################################### NEW ##################################################     -->
+    <!-- <div id="chargeCard" > -->
+        
+        <!-- <div class="row justify-content-md-center" >
+            <img  type="image" id="charge"    src="buttons/chargeButton.png"/>
+        </div> -->
+    <!-- </div> -->
+             
+            <!-- Modal -->
+            <!-- id="pipec" -->
+        <!-- <div
+        class="modal" 
+        id="exampleModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+        >
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Cards you own</h5>
+                <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+                >
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row justify-content-md-center" id="sosok">
+                     
                 </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="bloodyMarry" src="./leaders/bloodyMarry.png" />
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="carolusRex" src="./leaders/carolusRex.png" />
-                </div>
-                
+            </div>
             </div>
         </div>
+        </div> -->
 
-         <h1 style=font-size:100px id="features">Night Witches</h1>
+                <!-- ########################################################### NEW ##################################################     -->
 
-        <div class="container" id="witches">
-            <div class="row justify-content-md-center ">
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders ">
-                    <img type="image" id="aronova" src="./witches/aronova.jpg"/>
+            
+            <!-- Button trigger modal -->
+            <div id="chargeCard" > 
+                <div id="buttonCard1">
+            
+                    <img  type="image"  data-toggle="modal"  data-target="#exampleModalLong" src="buttons/key1.png"/>
+                    
                 </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="belik" src="./witches/belik.jpg"/>
+                <div id="cardToForge">
+                    <img  type="image"   data-toggle="modal"  data-target="#exampleModalLong"  src="buttons/cardToForge.png"/>
+                    
+                </div> 
+                <div id="buttonCard2">
+                    <img  type="image"  data-toggle="modal"   data-target="#exampleModalLong"  src="buttons/key2.png"/>
+            
                 </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="chechneva" src="./witches/chechneva.jpg"/>
+                <div class="row justify-content-md-center" >
+                    <img  type="image" id="charge"    src="buttons/chargeButton.png"/>
                 </div>
-                
             </div>
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-
-        <h1 style=font-size:100px id="features">Spies</h1>
-
-        <div class="container" id="witches">
-            <div class="row justify-content-md-center ">
-               
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="belik" src="./spies/hall.png"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="chechneva" src="./spies/kyznetsov.png"/>
-                </div>
-                <div onclick="window.location.href='cardInfo.html';" style="cursor: pointer" class="cardLeaders">
-                    <img type="image" id="gasheva" src="./spies/morros.png"/>
-                </div>
-               
-                
-            </div>
+        <div class="modal-body">
+            <div class="row justify-content-md-center" id="sosok">
+            </div> 
         </div>
-
+        
+      </div>
     </div>
+  </div>    
 
-    <div id="chargeCard" class="row justify-content-md-center">
-        <div >
-            <img  type="image" id="buttonCard1"  src="buttons/key1.png"/>
-            
-        </div>
-        <div>
-            <img  type="image" id="cardToForge"   src="buttons/cardToForge.png"/>
-            
-        </div>
-        <div>
-            <img  type="image" id="butonCard2"   src="buttons/key2.png"/>
-            
-        </div>
-        <div class="row justify-content-md-center" >
-            <img  type="image" id="charge"   src="buttons/chargeButton.png"/>
-        </div>
-    </div>
+
+
     </body>
     <script src="./index.js"></script>
 </html>

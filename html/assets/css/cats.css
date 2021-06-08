@@ -340,13 +340,3 @@ body {
   z-index: 1;
   transform: rotate(-45deg);
 }
-/* .cursor {
-    position: absolute;
-    height: 23px;
-    width: 23px;
-    border: none;
-    border-radius: 50%;
-    background: #b40660;
-    transform: translateX(-50%) translateY(-50%);
-    z-index: 4000;
-} */

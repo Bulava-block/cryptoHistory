@@ -136,6 +136,7 @@ contract cryptoHistory is ERC721, Ownable, ERC721Burnable {
         collection = card.collection;
         cardType = card.cardType;
         capacity = card.capacity;
+        return (card.collection, card.cardType, card.capacity);
     }
 
     // functions that we use to add remove from the array of charged cards

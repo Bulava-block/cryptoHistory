@@ -6,12 +6,12 @@ async function main() {
   const cryptoHistory = await ethers.getContractFactory("cryptoHistory");
   const cryptHist = await cryptoHistory.deploy();
 
-  const CardMarketPlace = await ethers.getContractFactory("CardMarketPlace");
-  const marketPlace = await CardMarketPlace.deploy("0xdf3e18d64bc6a983f673ab319ccae4f1a57c7097");
+  // const CardMarketPlace = await ethers.getContractFactory("CardMarketPlace");
+  // const marketPlace = await CardMarketPlace.deploy("0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266");
 
   console.log("Greeter deployed to:", greeter.address);
-  console.log("Greeter deployed to:", cryptHist.address)
-  console.log("Greeter deployed to:", marketPlace.address)
+  console.log("cryptoHistory deployed to:", cryptHist.address)
+  // console.log("marketPlace deployed to:", marketPlace.address)
 }
 
 main()
